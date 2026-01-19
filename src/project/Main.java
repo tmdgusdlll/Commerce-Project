@@ -2,6 +2,7 @@ package project;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,5 +27,21 @@ public class Main {
         }
         System.out.println("0. 종료           | 프로그램 종료" );
 
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("상품을 선택하세요: ");
+            int answer;
+
+            try {
+                System.out.print("상품을 선택하세요: ");
+                answer = Integer.parseInt(sc.nextLine());
+                if (answer == 0) {
+                    System.out.println("커머스 플랫폼을 종료합니다.");
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("숫자만 입력해주세요.");
+            }
+        }
     }
 }
