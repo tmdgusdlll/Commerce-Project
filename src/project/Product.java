@@ -54,4 +54,10 @@ public class Product {
                 ", quantity=" + stock +
                 '}';
     }
+
+    public String toDisplayString() {
+        return String.format("%s | %,d원 | %s | 재고: %d개",
+                name, price, description, stock);
+    }
+
 }

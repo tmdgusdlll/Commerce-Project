@@ -23,26 +23,29 @@ public class CommerceSystem {
 
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.print("메뉴를 선택하세요: ");
+            System.out.print("카테고리를 선택하세요: ");
             int select = Integer.parseInt(sc.nextLine());
 
-            System.out.println("[ 실시간 커머스 플랫폼 - 전자제품 ]");
-            for (int i = 0; i < products.size(); i++) {
-                Product p = products.get(i);
-                System.out.printf("%d. %-12s | %,10d원 | %s%n", i + 1,
-                        p.getName(),
-                        p.getPrice(),
-                        p.getDescription()
-                );
+            Category selectedCategory = categories.get(select - 1);
+            List<Product> list = selectedCategory.getProducts();
+
+            switch (select) {
+                case 1, 2, 3 -> selectedCategory.showProducts();
             }
-            System.out.println("0. 뒤로가기");
 
             while (true) {
                 System.out.print("품목을 선택하세요: ");
                 int answer = Integer.parseInt(sc.nextLine());
+
                 if (answer == 0) {
                     System.out.println("커머스 플랫폼을 종료합니다.");
                     break;
+                } else if (answer == 1) {
+                    System.out.println("선택한 상품: " + list.get(0).toDisplayString());
+                } else if (answer == 2) {
+                    System.out.println("선택한 상품: " + list.get(1).toDisplayString());
+                }else if (answer == 3) {
+                    System.out.println("선택한 상품: " + list.get(2).toDisplayString());
                 }
             }
 
