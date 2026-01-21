@@ -6,7 +6,7 @@ import java.util.List;
 // 리스트(물품) 관리 하는 클래스
 public class Storage {
 
-    // List<Product>들로 카테고리 목록 (객체)를 만들겠다. -> List<Category>로 반환
+    // 내부의 상품 리스트(List<Product>)들로 카테고리 목록 (객체)를 만들겠다. -> 그것들을 List<Category>로 반환
     public List<Category> createCategories() {
         Category elec = new Category("전자제품", elecProduct);
         Category cloth = new Category("의류", clothProducts);

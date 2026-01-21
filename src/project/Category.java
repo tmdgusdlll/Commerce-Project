@@ -1,6 +1,5 @@
 package project;
 
-import javax.naming.Name;
 import java.util.List;
 
 public class Category {
@@ -22,7 +21,7 @@ public class Category {
         return products;
     }
 
-    public void showProducts() {
+    public void showCategory() {
         System.out.println("[ " + getCategoryName() + "카테고리 ]");
         for (int i = 0; i < products.size(); i++) {
             Product p = products.get(i);
