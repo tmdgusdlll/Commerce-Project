@@ -3,14 +3,14 @@ package project;
 public class Product {
     private String name;
     private int price;
-    private String explain;
-    private int quantity;
+    private String description;
+    private int stock;
 
-    public Product(String name, int price, String explain, int quantity) {
+    public Product(String name, int price, String description, int stock) {
         this.name = name;
         this.price = price;
-        this.explain = explain;
-        this.quantity = quantity;
+        this.description = description;
+        this.stock = stock;
     }
 
     public String getName() {
@@ -29,20 +29,20 @@ public class Product {
         this.price = price;
     }
 
-    public String getExplain() {
-        return explain;
+    public String getDescription() {
+        return description;
     }
 
-    public void setExplain(String explain) {
-        this.explain = explain;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getStock() {
+        return stock;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     @Override
@@ -50,8 +50,8 @@ public class Product {
         return "Product{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", explain='" + explain + '\'' +
-                ", quantity=" + quantity +
+                ", explain='" + description + '\'' +
+                ", quantity=" + stock +
                 '}';
     }
 }

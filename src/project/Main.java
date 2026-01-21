@@ -6,27 +6,34 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // new 키워드로만 객체 생성
-        Product elecproduct1 = new Product("Galaxy S25 ", 1_200_000, "최신 안드로이드 스마트폰", 50);
-        Product elecproduct2 = new Product("iphone 16  ", 1_350_000, "Apple의 최신 스마트폰", 30);
-        Product elecproduct3 = new Product("MacBook Pro", 2_400_000, "M3 칩셋이 탑재된 노트북", 20);
-        Product elecproduct4 = new Product("AirPods Pro", 350_000, "노이즈 캔슬링 무선 이어폰", 70);
-
-        // List 선언으로 객체 생성
-        List<Product> elecProducts = new ArrayList<>();
-        elecProducts.add(elecproduct1);
-        elecProducts.add(elecproduct2);
-        elecProducts.add(elecproduct3);
-        elecProducts.add(elecproduct4);
-
-        // 카테고리 생성
-        Category elecCategory = new Category("전자제품",new ArrayList<>(elecProducts));
-        Category clothCategory = new Category("의류", new ArrayList<>());
-        Category foodCategory = new Category("식품", new ArrayList<>());
-        List<Category> categories = List.of(
-                elecCategory, clothCategory, foodCategory
-        );
-        CommerceSystem cs = new CommerceSystem(new ArrayList<>(categories));
+//        // new 키워드로만 객체 생성
+//        Product elecproduct1 = new Product("Galaxy S24", 1200000, "최신 안드로이드 스마트폰", 50);
+//        Product elecproduct2 = new Product("iphone 15", 1350000, "Apple의 최신 스마트폰", 30);
+//        Product elecproduct3 = new Product("MacBook Pro", 2400000, "M3 칩셋이 탑재된 노트북", 20);
+//        Product elecproduct4 = new Product("AirPods Pro", 350000, "노이즈 캔슬링 무선 이어폰", 70);
+//
+//        // List 선언으로 객체 생성
+//        List<Product> elecProducts = new ArrayList<>();
+//        elecProducts.add(elecproduct1);
+//        elecProducts.add(elecproduct2);
+//        elecProducts.add(elecproduct3);
+//        elecProducts.add(elecproduct4);
+//
+//        List<Product> elecproduct = List.of(
+//                new Product("Galaxy S24", 1200000, "최신 안드로이드 스마트폰", 50);
+//                new Product("iphone 15", 1350000, "Apple의 최신 스마트폰", 30);
+//                new Product("MacBook Pro", 2400000, "M3 칩셋이 탑재된 노트북", 20);
+//                new Product("AirPods Pro", 350000, "노이즈 캔슬링 무선 이어폰", 70);
+//        );
+//
+//        // 카테고리 생성
+//        Category elecCategory = new Category("전자제품",new ArrayList<>(elecProducts));
+//        Category clothCategory = new Category("의류", new ArrayList<>());
+//        Category foodCategory = new Category("식품", new ArrayList<>());
+//        List<Category> categories = List.of(
+//                elecCategory, clothCategory, foodCategory
+//        );
+        CommerceSystem cs = new CommerceSystem();
         cs.start();
 
 
@@ -37,7 +44,7 @@ public class Main {
 //            System.out.println((i + 1) + ". " + p.getName() + "   | " + p.getPrice() + "원 | " + p.getExplain());
 //        }
 //        System.out.println("0. 종료           | 프로그램 종료" );
-
+//
 //        while (true) {
 //            Scanner sc = new Scanner(System.in);
 //            int answer;
