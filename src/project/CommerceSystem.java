@@ -38,12 +38,12 @@ public class CommerceSystem {
             Category selectedCategory = categories.get(select - 1);
 
             // selectedCategory 변수에 있는 해당 카테고리를 showCategory 라는 메서드를 통해 보여주는 기능을 실행해라.
-            selectedCategory.showCategory();
 
             // selectedCategory 변수에 있는 해당 카테고리가 가진 상품 리스트를 가져와라. 그걸 list에 넣어라.
             List<Product> list = selectedCategory.getProducts();
 
             while (true) {
+                selectedCategory.showCategory();
                 System.out.print("번호를 입력하세요: ");
                 int answer = Integer.parseInt(sc.nextLine());
 
@@ -66,13 +66,19 @@ public class CommerceSystem {
                     if (respond == 1) {
                         System.out.println("담을 수량을 입력해 주세요.");
                         System.out.print("수량: ");
-//                        int respond2 = 0;
                         int respond2 = Integer.parseInt(sc.nextLine());
-                        cart.addProduct(list.get(answer - 1), respond2);
-                        System.out.println(list.get(answer - 1)
-                                .toDisplayString()+ "가 " + respond2 + "개 장바구니에 추가되었습니다.");
+                        boolean addOk = cart.addProduct(list.get(answer - 1), respond2);
+                        if (addOk) {
+                            System.out.println(list.get(answer - 1)
+                                    .toDisplayString() + "가 " + respond2 + "개 장바구니에 추가되었습니다.");
+                        } else {
+                            System.out.println("재고가 부족합니다.");
+                        }
+                        break;
                     }
-                    break;
+                    else if (respond == 2) {
+                        break;
+                    }
                 }
             }
         }

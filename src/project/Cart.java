@@ -15,7 +15,6 @@ public class Cart {
     // addproduct, totalPrice, 조회
     public boolean addProduct(Product product, int quantity) {
         if (!product.checkStock(quantity)) {
-            System.out.println("재고가 부족합니다.");
             return false;
         }
         cartItems.add(new CartItem(product,quantity));
