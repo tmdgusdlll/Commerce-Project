@@ -21,6 +21,9 @@ public class CommerceSystem {
         Scanner sc = new Scanner(System.in);
         while (true) {
             showMainMenu();
+            if (!cart.checkEmpty()) {
+                showOrderManage();
+            }
 
             System.out.print("번호를 입력하세요: ");
             int select = Integer.parseInt(sc.nextLine());
@@ -29,7 +32,21 @@ public class CommerceSystem {
                 System.out.println("커머스 플랫폼을 종료합니다.");
                 return;
             }
+            if (select == 4) {
+                if (cart.checkEmpty()) {
+                    System.out.println("안 돼 돌아가.");
+                } else {
+                    // TODO: 장바구니 확인 / 주문 처리
+                }
+                continue;
+            }
             if (select < 1 || select > categories.size()) {
+                System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
+                continue;
+            }
+
+
+            if (select < 1 || select > 4) {
                 System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                 continue;
             }
@@ -48,7 +65,6 @@ public class CommerceSystem {
                 int answer = Integer.parseInt(sc.nextLine());
 
                 if (answer == 0) {
-                    // TODO: 뒤로가기 구현하기
                     break;
                 }
                 if (answer < 1 || answer > list.size()) {
@@ -75,14 +91,14 @@ public class CommerceSystem {
                             System.out.println("재고가 부족합니다.");
                         }
                         break;
-                    }
-                    else if (respond == 2) {
+                    } else if (respond == 2) {
                         break;
                     }
                 }
             }
         }
     }
+
     public void showMainMenu() {
         System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
         for (int i = 0; i < categories.size(); i++) {

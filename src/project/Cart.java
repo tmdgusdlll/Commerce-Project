@@ -12,7 +12,7 @@ public class Cart {
 
 
 
-    // addproduct, totalPrice, 조회
+    // TODO: addproduct(완료), 조회(완료), totalPrice
     public boolean addProduct(Product product, int quantity) {
         if (!product.checkStock(quantity)) {
             return false;
@@ -21,7 +21,13 @@ public class Cart {
         return true;
     }
 
+    // 장바구니 비어있는 지?
+    public boolean checkEmpty() {
+        return cartItems.isEmpty();
+    }
 
-
-
+    // 장바구니 조회..?
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
 }
