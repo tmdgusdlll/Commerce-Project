@@ -30,4 +30,14 @@ public class Cart {
     public List<CartItem> getCartItems() {
         return cartItems;
     }
+
+    public int getTotalPrice() {
+        int total = 0;
+        for (CartItem item : cartItems) {
+            int price = item.getProduct().getPrice();
+            int qty = item.getQuantity();
+            total += price * qty;
+        }
+        return total;
+    }
 }

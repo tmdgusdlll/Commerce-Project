@@ -37,16 +37,17 @@ public class CommerceSystem {
                     System.out.println("안 돼 돌아가.");
                 } else {
                     // TODO: 장바구니 확인 / 주문 처리
+                    showCart();
+                    int as = Integer.parseInt(sc.nextLine());
+                    if (as == 1) {
+                        System.out.printf("주문이 완료되었습니다!" + "총 금액: %,d원%n", cart.getTotalPrice());
+                    } else if (as == 2) {
+                        continue;
+                    }
                 }
                 continue;
             }
             if (select < 1 || select > categories.size()) {
-                System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
-                continue;
-            }
-
-
-            if (select < 1 || select > 4) {
                 System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                 continue;
             }
@@ -59,6 +60,7 @@ public class CommerceSystem {
             // selectedCategory 변수에 있는 해당 카테고리가 가진 상품 리스트를 가져와라. 그걸 list에 넣어라.
             List<Product> list = selectedCategory.getProducts();
 
+            // TODO: 장바구니 상품 추가후 메인으로 가는 게 나은가 아님 카테고리에 머물러있는게 나은가..
             while (true) {
                 selectedCategory.showCategory();
                 System.out.print("번호를 입력하세요: ");
@@ -110,7 +112,31 @@ public class CommerceSystem {
     public void showOrderManage() {
         System.out.println();
         System.out.println("[ 장바구니 내역]");
-        System.out.printf("%-2d. %-12s | %s%n", 4, "장바구니 확인", "장바구니를 확인 후 주문합니다.");
-        System.out.printf("%-2d. %-12s | %s%n", 5, "주문 취소", "진행중인 주문을 취소합니다.");
+        System.out.printf("%-1d.%-12s | %s%n", 4, "장바구니 확인", "장바구니를 확인 후 주문합니다.");
+        System.out.printf("%-1d.%-13s | %s%n", 5, "주문 취소", "진행중인 주문을 취소합니다.");
+    }
+
+    // TODO: 장바구니에 담긴 상품 목록 보여주는 메서드
+    public void showCart() {
+        int total = 0;
+        for (CartItem item : cart.getCartItems()) {
+            Product p = item.getProduct();
+            int price = item.getProduct().getPrice();
+            int qty = item.getQuantity();
+//            total += price * qty;
+            System.out.println("[ 장바구니 내역 ]");
+            System.out.printf(
+                    "%-12s | %,d원 | %s | 수량: %d개%n",
+                    p.getName(),
+                    price,
+                    p.getDescription(),
+                    qty
+            );
+            System.out.println();
+            System.out.println("[ 총 주문 금액 ]");
+//            System.out.println(total);
+            System.out.printf("%,d원%n", cart.getTotalPrice());
+            System.out.println("1. 주문 확정        2. 메인으로 돌아가기");
+        }
     }
 }

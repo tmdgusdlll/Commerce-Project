@@ -4,6 +4,7 @@ package project;
 // 추가 된 여러 타입의 상품들
 public class CartItem {
     Product product;
+//    int price;
     int quantity;
 
     public CartItem(Product product, int quantity) {
@@ -11,5 +12,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public Product getProduct() {
+        return product;
+    }
 
+    public int getQuantity() {
+        return quantity;
+    }
 }

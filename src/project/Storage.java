@@ -13,7 +13,7 @@ public class Storage {
      * 만든거를 CommerceSystem 클래스에서 불러서 써야하기 때문에 void (X) return!!
      */
 
-    // 상품 리스트
+    // 상품 리스트 ( Product 클래스의 product 들을 각각 List형태로 객체화)
     private List<Product> elecProducts = new ArrayList<>();
     private List<Product> clothProducts = new ArrayList<>();
     private List<Product> foodProducts = new ArrayList<>();
