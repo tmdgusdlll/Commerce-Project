@@ -3,11 +3,12 @@ package project;
 import java.util.List;
 
 public class Category {
+    // Product 클래스의 각 상품들을 List<Product> 타입으로 정리하고, categoryName을 붙혀서 관리하는 클래스
 
     private String categoryName;
     private List<Product> products;
 
-    // 카테고리라는 객체를 만들건데, 이름과 리스트를 가지고 만들어라.
+    // 카테고리라는 객체를 만들건데, 카테고리 이름과 상품 리스트를 가지고 만들어라.
     public Category(String categoryName, List<Product> products) {
         this.categoryName = categoryName;
         this.products = products;

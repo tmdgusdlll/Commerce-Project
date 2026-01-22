@@ -3,10 +3,16 @@ package project;
 import java.util.ArrayList;
 import java.util.List;
 
-// 리스트(물품) 관리 하는 클래스
+// 카테고리(+물품 리스트) 관리 하는 클래스
 public class Storage {
 
-    // 내부의 상품 리스트(List<Product>)들로 카테고리 목록 (객체)를 만들겠다. -> 그것들을 List<Category>로 반환
+    /**
+     * 결론적으로 Product 클래스 (개별 상품들)은 리스트로 만들어서 (각 categoryName을 붙혀서)Category 클래스가 관리
+     * Storage 클래스는 그 Category 클래스를 관리(보관)
+     * CommerceSystem 클래스는 Product 클래스 몰라도 됨. Storage 클래스에서 카테고리를 그냥 요청하면 됨.
+     * 만든거를 CommerceSystem 클래스에서 불러서 써야하기 때문에 void (X) return!!
+     */
+    //내부의 카테고리 이름과 상품 리스트들로 카테고리 객체를 만들겠다. -> 그것들을 List<Category>로 반환
     public List<Category> createCategories() {
         Category elec = new Category("전자제품", elecProduct);
         Category cloth = new Category("의류", clothProducts);

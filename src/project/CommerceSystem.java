@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CommerceSystem {
-
-//    private List<Product> products;
+    // Product클래스와의 연결은 끊어짐. (카테고리나 리스트가 필요하면 Storage 클래스에게 요청하면 됨)
 
     // Storage 객체 생성
     Storage storage = new Storage();
@@ -16,16 +15,12 @@ public class CommerceSystem {
     public CommerceSystem() {
 //        this.products = products;
     }
+
     void start() {
-
-        System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
-        for (int i = 0; i < categories.size(); i++) {
-            System.out.println((i + 1) + "." + categories.get(i).getCategoryName());
-        }
-        System.out.println("0.종료     | 프로그램 종료");
-
         Scanner sc = new Scanner(System.in);
         while (true) {
+            showMainMenu();
+
             System.out.print("카테고리를 선택하세요: ");
             int select = Integer.parseInt(sc.nextLine());
 
@@ -41,7 +36,6 @@ public class CommerceSystem {
             // 카테고리 목록 중 선택한 숫자 - 1의 인덱스의 카테고리를 가져와라. 그걸 selectedCategory 변수에 넣어라.
             Category selectedCategory = categories.get(select - 1);
 
-
             // selectedCategory 변수에 있는 해당 카테고리를 showCategory 라는 메서드를 통해 보여주는 기능을 실행해라.
             selectedCategory.showCategory();
 
@@ -49,7 +43,7 @@ public class CommerceSystem {
             List<Product> list = selectedCategory.getProducts();
 
             while (true) {
-                System.out.print("품목을 선택하세요: ");
+                System.out.print("번호를 입력하세요: ");
                 int answer = Integer.parseInt(sc.nextLine());
 
                 if (answer == 0) {
@@ -63,6 +57,13 @@ public class CommerceSystem {
                 // 카테고리가 가진 상품 리스트 중 선택한 숫자 - 1인 인덱스에 해당하는 상품을 toDisplayString해서 가져와라.
                 System.out.println("선택한 상품: " + list.get(answer - 1).toDisplayString());
             }
-            }
         }
     }
+    public void showMainMenu() {
+        System.out.println("[ 실시간 커머스 플랫폼 메인 ]");
+        for (int i = 0; i < categories.size(); i++) {
+            System.out.println((i + 1) + "." + categories.get(i).getCategoryName());
+        }
+        System.out.println("0.종료     | 프로그램 종료");
+    }
+}

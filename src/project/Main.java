@@ -6,13 +6,13 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-//        // new 키워드로만 객체 생성
+//        // new 키워드로만 Product 객체 생성
 //        Product elecproduct1 = new Product("Galaxy S24", 1200000, "최신 안드로이드 스마트폰", 50);
 //        Product elecproduct2 = new Product("iphone 15", 1350000, "Apple의 최신 스마트폰", 30);
 //        Product elecproduct3 = new Product("MacBook Pro", 2400000, "M3 칩셋이 탑재된 노트북", 20);
 //        Product elecproduct4 = new Product("AirPods Pro", 350000, "노이즈 캔슬링 무선 이어폰", 70);
 //
-//        // List 선언으로 객체 생성
+//        // List 선언으로 배열(여러 Product 추가) 생성
 //        List<Product> elecList = new ArrayList<>();
 //        elecList.add(elecproduct1);
 //        elecList.add(elecproduct2);
