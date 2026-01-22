@@ -8,6 +8,7 @@ public class CommerceSystem {
 
     // Storage 객체 생성
     Storage storage = new Storage();
+    Cart cart = new Cart();
 
     // Storage에게 카데고리 목록을 만들어 달라고 요청 -> 그 결과(List<Category>)를 categories라는 이름의 변수에 담는다.
     List<Category> categories = storage.createCategories();
@@ -21,7 +22,7 @@ public class CommerceSystem {
         while (true) {
             showMainMenu();
 
-            System.out.print("카테고리를 선택하세요: ");
+            System.out.print("번호를 입력하세요: ");
             int select = Integer.parseInt(sc.nextLine());
 
             if (select == 0) {
@@ -56,6 +57,23 @@ public class CommerceSystem {
                 }
                 // 카테고리가 가진 상품 리스트 중 선택한 숫자 - 1인 인덱스에 해당하는 상품을 toDisplayString해서 가져와라.
                 System.out.println("선택한 상품: " + list.get(answer - 1).toDisplayString());
+                while (true) {
+                    System.out.println("\"" + list.get(answer - 1).toDisplayString() + "\"");
+                    System.out.println("위 상품을 장바구니에 추가하시겠습니까?");
+                    System.out.println("1. 확인       2. 취소");
+                    System.out.print("입력: ");
+                    int respond = Integer.parseInt(sc.nextLine());
+                    if (respond == 1) {
+                        System.out.println("담을 수량을 입력해 주세요.");
+                        System.out.print("수량: ");
+//                        int respond2 = 0;
+                        int respond2 = Integer.parseInt(sc.nextLine());
+                        cart.addProduct(list.get(answer - 1), respond2);
+                        System.out.println(list.get(answer - 1)
+                                .toDisplayString()+ "가 " + respond2 + "개 장바구니에 추가되었습니다.");
+                    }
+                    break;
+                }
             }
         }
     }
@@ -65,5 +83,12 @@ public class CommerceSystem {
             System.out.println((i + 1) + "." + categories.get(i).getCategoryName());
         }
         System.out.println("0.종료     | 프로그램 종료");
+    }
+
+    public void showOrderManage() {
+        System.out.println();
+        System.out.println("[ 장바구니 내역]");
+        System.out.printf("%-2d. %-12s | %s%n", 4, "장바구니 확인", "장바구니를 확인 후 주문합니다.");
+        System.out.printf("%-2d. %-12s | %s%n", 5, "주문 취소", "진행중인 주문을 취소합니다.");
     }
 }

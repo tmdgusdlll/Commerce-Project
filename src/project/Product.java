@@ -37,13 +37,26 @@ public class Product {
 //        this.description = description;
 //    }
 
-//    public int getStock() {
-//        return stock;
-//    }
+    public int getStock() {
+        return stock;
+    }
 
+    // 세터를 사용해 재고를 차감하는 것 보다 새로운 메서드를 이용하는 것이 효율적이다 라고 판단
 //    public void setStock(int stock) {
 //        this.stock = stock;
 //    }
+
+    // 재고 확인 메서드
+    public boolean checkStock(int inputStock) {
+        return stock >= inputStock;
+    }
+
+    // 재고 차감 메서드
+    public void decStock(int inputStock) {
+        if (checkStock(inputStock)) {
+            stock -= inputStock;
+        }
+    }
 
     @Override
     public String toString() {
@@ -56,8 +69,8 @@ public class Product {
     }
 
     public String toDisplayString() {
-        return String.format("%s | %,d원 | %s | 재고: %d개",
-                name, price, description, stock);
+        return String.format("%s | %,d원 | %s|",
+                name, price, description);
     }
 
 }
