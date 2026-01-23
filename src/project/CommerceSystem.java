@@ -1,5 +1,6 @@
 package project;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,6 +21,7 @@ public class CommerceSystem {
     void start() {
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.println();
             showMainMenu();
             if (!cart.checkEmpty()) {
                 showOrderManage();
@@ -50,6 +52,9 @@ public class CommerceSystem {
                     int as = Integer.parseInt(sc.nextLine());
                     if (as == 1) {
                         System.out.printf("주문이 완료되었습니다!" + "총 금액: %,d원%n", cart.getTotalPrice());
+                        // TODO: 날짜, 재고 차감 업데이트, 장바구니 초기화
+                        update();
+
                     } else if (as == 2) {
                         continue;
                     }
@@ -107,8 +112,6 @@ public class CommerceSystem {
                         }
                     }
                     if (respond == 1) {
-//                        System.out.println("담을 수량을 입력해 주세요.");
-//                        System.out.print("수량: ");
                         int respond2;
                         System.out.println("담을 수량을 입력해 주세요.");
                         while (true) {
@@ -160,18 +163,28 @@ public class CommerceSystem {
             int qty = item.getQuantity();
 //            total += price * qty;
             System.out.println("[ 장바구니 내역 ]");
-            System.out.printf(
-                    "%-12s | %,d원 | %s | 수량: %d개%n",
-                    p.getName(),
-                    price,
-                    p.getDescription(),
-                    qty
-            );
+            System.out.printf("%-12s | %,d원 | %s | 수량: %d개%n", p.getName(), price, p.getDescription(), qty);
             System.out.println();
             System.out.println("[ 총 주문 금액 ]");
 //            System.out.println(total);
             System.out.printf("%,d원%n", cart.getTotalPrice());
             System.out.println("1. 주문 확정        2. 메인으로 돌아가기");
+        }
+    }
+
+    // 주문 확정시 재고 업데이트, 날짜 출력
+    public void update() {
+        LocalDate now = LocalDate.now();
+        System.out.println("[" + now + " 변경됨]");
+        for (CartItem item : cart.getCartItems()) {
+            Product p = item.getProduct();
+            int qty = item.getQuantity();
+
+            int beStock = p.getStock();
+            p.decStock(qty);
+            int afStock = p.getStock();
+
+            System.out.printf("%s 재고가 %d개 → %d개로 업데이트되었습니다.%n", p.getName(), beStock, afStock);
         }
     }
 }
