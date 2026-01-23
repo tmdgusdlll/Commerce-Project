@@ -10,7 +10,9 @@ public class Main {
 //        LocalDate now = LocalDate.now();
 //        System.out.println(now);
 
+        // cs라는 CommerceSystem의 객체를 생성해라.
         CommerceSystem cs = new CommerceSystem();
+        // cs 객체의 start() 메서드를 실행해라.
         cs.start();
 
     }

@@ -47,6 +47,7 @@ public class Product {
 //    }
 
     // 재고 확인 메서드
+    // 입력받은 수량이 남은 재고보다 작거나 같으면 true를 반환해라.
     public boolean checkStock(int inputStock) {
         return stock >= inputStock;
     }
