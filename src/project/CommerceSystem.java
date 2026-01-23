@@ -47,14 +47,12 @@ public class CommerceSystem {
                 if (cart.checkEmpty()) {
                     System.out.println("안 돼 돌아가.");
                 } else {
-                    // TODO: 장바구니 확인 / 주문 처리
                     showCart();
                     int as = Integer.parseInt(sc.nextLine());
                     if (as == 1) {
                         System.out.printf("주문이 완료되었습니다!" + "총 금액: %,d원%n", cart.getTotalPrice());
-                        // TODO: 날짜, 재고 차감 업데이트, 장바구니 초기화
                         update();
-
+                        cart.clear();
                     } else if (as == 2) {
                         continue;
                     }
@@ -82,6 +80,7 @@ public class CommerceSystem {
                     try {
                         System.out.print("번호를 입력하세요: ");
                         answer = Integer.parseInt(sc.nextLine());
+                        System.out.println();
                         break;
                     } catch (NumberFormatException e) {
                         System.out.println("숫자만 입력하세요.");
@@ -154,23 +153,24 @@ public class CommerceSystem {
         System.out.printf("%-1d.%-13s | %s%n", 5, "주문 취소", "진행중인 주문을 취소합니다.");
     }
 
-    // TODO: 장바구니에 담긴 상품 목록 보여주는 메서드
+    // 장바구니에 담긴 상품 목록 보여주는 메서드
+    // TODO: 장바구니에 상품이 여러개일때, 출력문이 상품개수만큼 나옴.
     public void showCart() {
         int total = 0;
+        System.out.println("[ 장바구니 내역 ]");
         for (CartItem item : cart.getCartItems()) {
             Product p = item.getProduct();
             int price = item.getProduct().getPrice();
             int qty = item.getQuantity();
-//            total += price * qty;
-            System.out.println("[ 장바구니 내역 ]");
             System.out.printf("%-12s | %,d원 | %s | 수량: %d개%n", p.getName(), price, p.getDescription(), qty);
-            System.out.println();
-            System.out.println("[ 총 주문 금액 ]");
-//            System.out.println(total);
-            System.out.printf("%,d원%n", cart.getTotalPrice());
+        }
+        System.out.println();
+        System.out.println("[ 총 주문 금액 ]");
+        System.out.printf("%,d원%n", cart.getTotalPrice());
+        System.out.println();
             System.out.println("1. 주문 확정        2. 메인으로 돌아가기");
         }
-    }
+
 
     // 주문 확정시 재고 업데이트, 날짜 출력
     public void update() {
