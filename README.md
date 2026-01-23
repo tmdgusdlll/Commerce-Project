@@ -8,5 +8,6 @@
 - 주문 확정시 주문한 수량 만큼 재고가 업데이트(차감)되며 장바구니도 초기화된다.
 
 [프로젝트 흐름도]
-(부족하지만,,, )
-<img width="1776" height="1444" alt="image" src="https://github.com/user-attachments/assets/bb05e5ac-ef2d-4907-99b1-b01064e6bfc2" />
+스스로 이해하고자 만든 흐름도를 AI로 그림화
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/c7be6b23-b5b3-40d1-8e09-8efef00dd469" />
+
