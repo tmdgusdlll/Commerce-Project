@@ -25,8 +25,17 @@ public class CommerceSystem {
                 showOrderManage();
             }
 
-            System.out.print("번호를 입력하세요: ");
-            int select = Integer.parseInt(sc.nextLine());
+            int select;
+            while (true) {
+                try {
+                    System.out.print("번호를 입력하세요: ");
+                    select = Integer.parseInt(sc.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("숫자만 입력해주세요.");
+                }
+
+            }
 
             if (select == 0) {
                 System.out.println("커머스 플랫폼을 종료합니다.");
@@ -63,8 +72,16 @@ public class CommerceSystem {
             // TODO: 장바구니 상품 추가후 메인으로 가는 게 나은가 아님 카테고리에 머물러있는게 나은가..
             while (true) {
                 selectedCategory.showCategory();
-                System.out.print("번호를 입력하세요: ");
-                int answer = Integer.parseInt(sc.nextLine());
+                int answer;
+                while (true) {
+                    try {
+                        System.out.print("번호를 입력하세요: ");
+                        answer = Integer.parseInt(sc.nextLine());
+                        break;
+                    } catch (NumberFormatException e) {
+                        System.out.println("숫자만 입력하세요.");
+                    }
+                }
 
                 if (answer == 0) {
                     break;
@@ -80,11 +97,29 @@ public class CommerceSystem {
                     System.out.println("위 상품을 장바구니에 추가하시겠습니까?");
                     System.out.println("1. 확인       2. 취소");
                     System.out.print("입력: ");
-                    int respond = Integer.parseInt(sc.nextLine());
+                    int respond;
+                    while (true) {
+                        try {
+                            respond = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("잘못된 입력입니다.");
+                        }
+                    }
                     if (respond == 1) {
+//                        System.out.println("담을 수량을 입력해 주세요.");
+//                        System.out.print("수량: ");
+                        int respond2;
                         System.out.println("담을 수량을 입력해 주세요.");
-                        System.out.print("수량: ");
-                        int respond2 = Integer.parseInt(sc.nextLine());
+                        while (true) {
+                            try {
+                                System.out.print("수량: ");
+                                respond2 = Integer.parseInt(sc.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("숫자만 입력해주세요.");
+                            }
+                        }
                         boolean addOk = cart.addProduct(list.get(answer - 1), respond2);
                         if (addOk) {
                             System.out.println(list.get(answer - 1)

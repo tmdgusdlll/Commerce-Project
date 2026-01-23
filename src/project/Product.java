@@ -52,6 +52,7 @@ public class Product {
     }
 
     // 재고 차감 메서드
+    // TODO: LV.1 마지막 주문하기 누르면 장바구니 초기화하고 재고 차감 구현할 것.
     public void decStock(int inputStock) {
         if (checkStock(inputStock)) {
             stock -= inputStock;
